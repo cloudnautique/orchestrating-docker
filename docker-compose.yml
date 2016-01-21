@@ -21,6 +21,8 @@ nginx:
     - web
   links:
     - web:web
+  labels:
+    io.rancher.sidekicks: web
 
 data:
   image: postgres:latest
@@ -35,3 +37,5 @@ postgres:
     - data
   ports:
     - "5432:5432"
+  labels:
+    io.rancher.sidekicks: web
