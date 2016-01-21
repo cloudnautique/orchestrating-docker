@@ -1,7 +1,7 @@
 FROM ubuntu:14.04.3
 
-ADD . /scratch/workspace
+ADD . /var/jenkins_home/
 RUN apt-get update && apt-get install -y curl && \
-    /scratch/workspace/scripts/bootstrap
+    /var/jenkins_home/scripts/bootstrap
 
-CMD ["/scratch/workspace/scripts/ci"]
+CMD ["/var/jenkins_home/scripts/ci"]
