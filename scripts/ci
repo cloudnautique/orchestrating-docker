@@ -3,7 +3,7 @@
 cd $(dirname $0)/..
 
 pushd nginx
-docker build --rm -t rancher/demo-nginx .
+docker build --rm -t rancheriodhci/demo-nginx .
 popd
 pushd web
-docker build --rm -t rancher/web-nginx .
+docker build --rm -t rancheriodhci/demo-web .
