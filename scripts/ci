@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker ps -a
+cd $(dirname $0)/..
 
-docker build --rm -f ./nginx/Dockerfile -t rancher/demo-nginx .
-docker build --rm -f ./web/Dockerfile -t rancher/web-nginx .
+pushd nginx
+docker build --rm -t rancher/demo-nginx .
+popd
+pushd web
+docker build --rm -t rancher/web-nginx .
