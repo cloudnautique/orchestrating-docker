@@ -1,6 +1,6 @@
 web:
   restart: always
-  build: rancheriodhci/demo-web:${TAG}
+  image: rancheriodhci/demo-web:${TAG}
   expose:
     - "8000"
   links:
@@ -12,7 +12,7 @@ web:
 
 nginx:
   restart: always
-  build: rancheriodhci/demo-nginx:${TAG}
+  image: rancheriodhci/demo-nginx:${TAG}
   ports:
     - "80:80"
   volumes:
