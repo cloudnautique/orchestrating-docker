@@ -7,7 +7,7 @@ web:
   volumes:
     - /usr/src/app/static
   env_file: .env
-  command: /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+  command: '/usr/local/bin/gunicorn -w 2 -b :8000 app:app'
 
 nginx:
   image: rancheriodhci/demo-nginx:${TAG}
