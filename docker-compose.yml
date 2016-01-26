@@ -2,7 +2,6 @@ web:
   image: rancheriodhci/demo-web:${TAG}
   expose:
     - "8000"
-  net: 'container:nginx'
   volumes:
     - /usr/src/app/static
   env_file: .env
@@ -14,6 +13,7 @@ nginx:
     - "1080:80"
   links:
     - postgres:postgres
+    - web:web
   volumes:
     - /www/static
   volumes_from:
