@@ -1,7 +1,5 @@
 #/bin/bash
 
-cd $(dirname $0)
-
 sleep 10
 
 /usr/local/bin/python create_db.py

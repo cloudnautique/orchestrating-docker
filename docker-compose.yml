@@ -9,8 +9,6 @@ web:
 
 nginx:
   image: rancheriodhci/demo-nginx:${TAG}
-  ports:
-    - "1080:80"
   links:
     - postgres:postgres
     - web:web
