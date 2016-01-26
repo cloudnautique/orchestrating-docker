@@ -1,8 +1,11 @@
-#/bin/bash
+#!/bin/bash
 
 sleep 10
 
-/usr/local/bin/python create_db.py
+/giddyup leader check
+if [ "$?" -eq "0" ]; then
+  /usr/local/bin/python create_db.py
+fi
 
 sleep 5
 

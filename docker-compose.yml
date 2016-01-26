@@ -13,7 +13,7 @@ web:
     - "8000"
   volumes:
     - /usr/src/app/static
-  command: /usr/src/app/start_app.sh
+  command: '/usr/src/app/start_app.sh'
   env_file: .env
 
 nginx:
