@@ -6,4 +6,4 @@ sleep 10
 
 sleep 5
 
-exec /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+exec '/usr/local/bin/gunicorn -w 2 -b :8000 app:app'
