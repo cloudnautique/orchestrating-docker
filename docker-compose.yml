@@ -7,6 +7,13 @@ web:
   env_file: .env
   command: '/usr/local/bin/gunicorn -w 2 -b :8000 app:app'
 
+db-init:
+  image: rancheriodhci/demo-web
+  labels:
+    io.rancher.container.start_once: "true"
+  command: /bin/sh -c "python db_create.py"
+  
+
 nginx:
   image: rancheriodhci/demo-nginx:${TAG}
   ports:
@@ -19,7 +26,8 @@ nginx:
   volumes_from:
     - web
   labels:
-    io.rancher.sidekicks: web
+    io.rancher.sidekicks: web,db-init
+  command: /bin/sh -c "sleep 10 && /usr/sbin/nginx"
 
 data:
   image: postgres:latest
@@ -35,7 +43,7 @@ postgres:
   image: postgres:latest
   volumes_from:
     - data
-  ports:
-    - "5432:5432"
+  expose:
+    - "5432"
   labels:
     io.rancher.sidekicks: data
