@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd $(dirname $0)
 sleep 10
 
 /giddyup leader check
