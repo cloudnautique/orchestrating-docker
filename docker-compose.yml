@@ -2,8 +2,7 @@ web:
   image: rancheriodhci/demo-web:${TAG}
   expose:
     - "8000"
-  links:
-    - postgres:postgres
+  net: 'container:nginx'
   volumes:
     - /usr/src/app/static
   env_file: .env
@@ -13,17 +12,18 @@ nginx:
   image: rancheriodhci/demo-nginx:${TAG}
   ports:
     - "1080:80"
+  links:
+    - postgres:postgres
   volumes:
     - /www/static
   volumes_from:
     - web
-  links:
-    - web:web
   labels:
     io.rancher.sidekicks: web
 
 data:
   image: postgres:latest
+  net: none
   labels:
     io.rancher.container.start_once: "true"
   volumes:
