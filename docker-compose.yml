@@ -4,7 +4,7 @@ web:
     - "8000"
   volumes:
     - /usr/src/app/static
-  command: /bin/sh -c 'sleep 5 && /usr/local/bin/gunicorn -w 2 -b :8000 app:app'
+  command: start_app.sh
   env_file: .env
 
 nginx:
@@ -22,14 +22,6 @@ nginx:
     io.rancher.sidekicks: web
   command: /bin/sh -c "sleep 10 && /usr/sbin/nginx"
 
-db-init:
-  image: rancheriodhci/demo-web:${TAG}
-  links:
-    - postgres:postgres
-  labels:
-    io.rancher.container.start_once: "true"
-  command: /bin/sh -c "sleep 5 && /usr/local/bin/python /usr/src/app/create_db.py"
-  env_file: .env
 postgres-data:
   image: postgres:latest
   net: none
@@ -45,4 +37,4 @@ postgres:
   expose:
     - "5432"
   labels:
-    io.rancher.sidekicks: postgres-data,db-init
+    io.rancher.sidekicks: postgres-data
