@@ -1,3 +1,12 @@
+messageboard-lb:
+  ports:
+  - 80:80
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - nginx:nginx
+  stdin_open: true
+
 web:
   image: rancheriodhci/demo-web:${TAG}
   expose:
