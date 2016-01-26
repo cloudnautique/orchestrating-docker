@@ -1,6 +1,9 @@
 #!/bin/bash
 
+set -x
+
 cd $(dirname $0)
+echo $(pwd)
 sleep 10
 
 /giddyup leader check
