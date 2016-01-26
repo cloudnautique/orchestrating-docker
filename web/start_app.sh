@@ -15,4 +15,4 @@ sleep 5
 
 cd $(dirname $0)
 echo $(pwd)
-exec '/usr/local/bin/gunicorn -w 2 -b :8000 usr.src.app:app'
+exec /usr/local/bin/gunicorn -w 2 -b :8000 app:app
